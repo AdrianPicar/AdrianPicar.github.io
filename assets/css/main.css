@@ -2101,6 +2101,7 @@ input, select, textarea {
 		.image img {
 			border-radius: 0.35em;
 			display: block;
+			max-height: 300px;
 		}
 
 		.image.left {
@@ -3061,7 +3062,6 @@ input, select, textarea {
 
 			.header {
 				background-attachment: scroll;
-				background-position: top left, center center;
 				background-size: auto,		cover;
 				left: auto;
 				padding: 6em 4em;
