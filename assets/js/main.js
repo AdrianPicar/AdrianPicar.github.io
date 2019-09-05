@@ -118,19 +118,19 @@
 
 //Adrian code below
 
-const BPITRADE_HEADER = "<strong>BPITrade</strong>, the online stock<br />trading website of BPI Securities."
+const BPITRADE_HEADER = "<strong>BPITrade</strong>, the online stock<br />trading website by Technistock<br /> for BPI Securities."
 const BPITRADE_URL = "https://www.bpitrade.com";
 const BPITRADE_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
 const BPITRADE_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
 						"Web Security", "Version Control (SVN)"]
 
-const FIRSTMETRO_HEADER = "<strong>FirstMetroSec</strong>, the online stock<br />trading website of BPI Securities.";
+const FIRSTMETRO_HEADER = "<strong>FirstMetroSec</strong>, the online stock<br />trading website by Technistock<br /> for First Metro Securities.";
 const FIRSTMETRO_URL = "https://www.firstmetrosec.ph";
 const FIRSTMETRO_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
 const FIRSTMETRO_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
 						"Web Security", "Version Control (SVN)"];
 	
-const OPEAPP_HEADER = "<strong>OPEAPP</strong>, the online stock<br />trading website of BPI Securities.";
+const OPEAPP_HEADER = "<strong>OPE-APP</strong>, an online pre-employment<br />exam website for PNOC-EC.";
 const OPEAPP_URL_SITE = "http://opeapp.herokuapp.com";
 const OPEAPP_URL_CODE = "https://github.com/AdrianPicar/OPE_APP";
 const OPEAPP_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "PHP (CodeIgniter)", "MySQL"];
@@ -147,7 +147,8 @@ $(".project-link").on("click", function(){
 	var toolsList = [];
 	var conceptsList = [];
 	var toolsContent = "";
-	var conceptsContent = ""
+	var conceptsContent = "";
+
 	switch(projectName){
 		case "bpitrade" : 
 			headerContent = BPITRADE_HEADER;
