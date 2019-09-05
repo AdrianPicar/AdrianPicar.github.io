@@ -118,27 +118,34 @@
 
 //Adrian code below
 
-const BPITRADE_HEADER = "<strong>BPITrade</strong>, the online stock<br />trading website by Technistock<br /> for BPI Securities."
+const BPITRADE_HEADER = "<strong>BPITrade</strong>, the online stock <br>trading website by Technistock <br>for BPI Securities.";
 const BPITRADE_URL = "https://www.bpitrade.com";
 const BPITRADE_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
 const BPITRADE_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
-						"Web Security", "Version Control (SVN)"]
+						"Web Security", "Version Control (SVN)"];
+const BPITRADE_HIGHLIGHTS = ["Nice trading website", "The website is so good.",
+							"Very good functionalities", "Functions really well."];
 
-const FIRSTMETRO_HEADER = "<strong>FirstMetroSec</strong>, the online stock<br />trading website by Technistock<br /> for First Metro Securities.";
+const FIRSTMETRO_HEADER = "<strong>FirstMetroSec</strong>, the online stock <br>trading website by Technistock <br>for First Metro Securities.";
 const FIRSTMETRO_URL = "https://www.firstmetrosec.ph";
 const FIRSTMETRO_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
-const FIRSTMETRO_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
+const FIRSTMETRO_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", "REST API",
 						"Web Security", "Version Control (SVN)"];
+const FIRSTMETRO_HIGHLIGHTS = ["Nice FM website", "The website is so good.",
+							"Very good first metro functionalities", "Functions really well."];
 	
-const OPEAPP_HEADER = "<strong>OPE-APP</strong>, an online pre-employment<br />exam website for PNOC-EC.";
+const OPEAPP_HEADER = "<strong>OPE-APP</strong>, an online pre-employment <br>exam website for PNOC-EC.";
 const OPEAPP_URL_SITE = "http://opeapp.herokuapp.com";
 const OPEAPP_URL_CODE = "https://github.com/AdrianPicar/OPE_APP";
 const OPEAPP_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "PHP (CodeIgniter)", "MySQL"];
 const OPEAPP_CONCEPTS = ["Model-View-Controller (MVC)", "Full Stack Web Development", "Version Control"];
+const OPEAPP_HIGHLIGHTS = ["Nice OPEAPP website", "The website is so good.",
+							"Very good OPEAPP functionalities", "Functions really well."];
 
 $(".project-link").on("click", function(){
 	var projectName = $(this).attr('id');
-	var screenNum = 1;
+	var highlightNum = 1;
+	var highlightListIndex = 0;
 	var imageUrl = "";
 	var headerContent = "";
 	var siteUrl = "";
@@ -155,6 +162,7 @@ $(".project-link").on("click", function(){
 			siteUrl = BPITRADE_URL;
 			toolsList = BPITRADE_TOOLS;
 			conceptsList = BPITRADE_CONCEPTS;
+			highlightsList = BPITRADE_HIGHLIGHTS;
 			showCodeLink = false;
 			break;
 		case "firstmetro" : 
@@ -162,6 +170,7 @@ $(".project-link").on("click", function(){
 			siteUrl = FIRSTMETRO_URL;
 			toolsList = FIRSTMETRO_TOOLS;
 			conceptsList = FIRSTMETRO_CONCEPTS;
+			highlightsList = FIRSTMETRO_HIGHLIGHTS;
 			showCodeLink = false;
 			break;
 		case "opeapp" : 
@@ -170,23 +179,23 @@ $(".project-link").on("click", function(){
 			codeUrl = OPEAPP_URL_CODE;
 			toolsList = OPEAPP_TOOLS;
 			conceptsList = OPEAPP_CONCEPTS;
+			highlightsList = OPEAPP_HIGHLIGHTS;
 			break;
 		default : 
 			break;
 	}
-				
+
+	$("#header-project > .inner > h1").html(headerContent);
+	$("#header-project").addClass("header");
+	$("#header-project").css("background-image", 'url(assets/css/images/overlay.png), url(images/'+projectName+'.jpg)');
+	$("#site-link").attr("href", siteUrl);
+
 	if(showCodeLink){
 		$("#code-link").attr("href", codeUrl);
 		$("#code-link").css("display", "inline-block");
 	}else{
 		$("#code-link").css("display", "none");
 	}
-
-	$("#header-project > .inner > h1").html(headerContent);
-	$("#site-link").attr("href", siteUrl);
-
-	$("#header-project").addClass("header");
-	$("#header-project").css("background-image", 'url(assets/css/images/overlay.png), url(images/'+projectName+'.jpg)');
 	
 	$.each(toolsList, function(index, val){
 		toolsContent += "&bull;&emsp; "	+ val + "<br>";
@@ -195,15 +204,22 @@ $(".project-link").on("click", function(){
 		conceptsContent += "&#9642;&emsp; "	+ val + "<br>";
 	});
 	$("#tools-col-1").html(toolsContent);
-	$("#tools-col-2").html(conceptsContent)
-	$(".screenshots").each(function(){
-		imageUrl = "images/" + projectName + "_" + screenNum + ".jpg";
-		$("#screenshot-"+screenNum).attr("src", imageUrl);
-		screenNum++;
-	})
+	$("#tools-col-2").html(conceptsContent);
+
+	$(".highlights").each(function(){
+		var currSelector = "#highlight-"+ highlightNum;
+		$(currSelector + " > h3").html(highlightsList[highlightListIndex]);
+		highlightListIndex++;
+		$(currSelector + " > p").html(highlightsList[highlightListIndex]);
+		
+		imageUrl = "images/screenshots/" + projectName + "_" + highlightNum + ".jpg";
+		$(currSelector + " > img").attr("src", imageUrl);
+		highlightNum++;
+	});
+
 	$(".project-article").each(function(){
 		$(this).css("display", "block");
-	})
+	});
 	$("#"+projectName+"-article").css("display", "none");
 	
 	$("#home").css("display", "none");
