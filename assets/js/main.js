@@ -115,3 +115,103 @@
 			});
  */
 })(jQuery);
+
+//Adrian code below
+
+const BPITRADE_HEADER = "<strong>BPITrade</strong>, the online stock<br />trading website of BPI Securities."
+const BPITRADE_URL = "https://www.bpitrade.com";
+const BPITRADE_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
+const BPITRADE_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
+						"Web Security", "Version Control (SVN)"]
+
+const FIRSTMETRO_HEADER = "<strong>FirstMetroSec</strong>, the online stock<br />trading website of BPI Securities.";
+const FIRSTMETRO_URL = "https://www.firstmetrosec.ph";
+const FIRSTMETRO_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
+const FIRSTMETRO_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
+						"Web Security", "Version Control (SVN)"];
+	
+const OPEAPP_HEADER = "<strong>OPEAPP</strong>, the online stock<br />trading website of BPI Securities.";
+const OPEAPP_URL_SITE = "http://opeapp.herokuapp.com";
+const OPEAPP_URL_CODE = "https://github.com/AdrianPicar/OPE_APP";
+const OPEAPP_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "PHP (CodeIgniter)", "MySQL"];
+const OPEAPP_CONCEPTS = ["Model-View-Controller (MVC)", "Full Stack Web Development", "Version Control"];
+
+$(".project-link").on("click", function(){
+	var projectName = $(this).attr('id');
+	var screenNum = 1;
+	var imageUrl = "";
+	var headerContent = "";
+	var siteUrl = "";
+	var codeUrl = "";
+	var showCodeLink = true;
+	var toolsList = [];
+	var conceptsList = [];
+	var toolsContent = "";
+	var conceptsContent = ""
+	switch(projectName){
+		case "bpitrade" : 
+			headerContent = BPITRADE_HEADER;
+			siteUrl = BPITRADE_URL;
+			toolsList = BPITRADE_TOOLS;
+			conceptsList = BPITRADE_CONCEPTS;
+			showCodeLink = false;
+			break;
+		case "firstmetro" : 
+			headerContent = FIRSTMETRO_HEADER;
+			siteUrl = FIRSTMETRO_URL;
+			toolsList = FIRSTMETRO_TOOLS;
+			conceptsList = FIRSTMETRO_CONCEPTS;
+			showCodeLink = false;
+			break;
+		case "opeapp" : 
+			headerContent = OPEAPP_HEADER;
+			siteUrl = OPEAPP_URL_SITE;
+			codeUrl = OPEAPP_URL_CODE;
+			toolsList = OPEAPP_TOOLS;
+			conceptsList = OPEAPP_CONCEPTS;
+			break;
+		default : 
+			break;
+	}
+				
+	if(showCodeLink){
+		$("#code-link").attr("href", codeUrl);
+		$("#code-link").css("display", "inline-block");
+	}else{
+		$("#code-link").css("display", "none");
+	}
+
+	$("#header-project > .inner > h1").html(headerContent);
+	$("#site-link").attr("href", siteUrl);
+
+	$("#header-project").addClass("header");
+	$("#header-project").css("background-image", 'url(assets/css/images/overlay.png), url(images/'+projectName+'.jpg)');
+	
+	$.each(toolsList, function(index, val){
+		toolsContent += "&bull;&emsp; "	+ val + "<br>";
+	});
+	$.each(conceptsList, function(index, val){
+		conceptsContent += "&#9642;&emsp; "	+ val + "<br>";
+	});
+	$("#tools-col-1").html(toolsContent);
+	$("#tools-col-2").html(conceptsContent)
+	$(".screenshots").each(function(){
+		imageUrl = "images/" + projectName + "_" + screenNum + ".jpg";
+		$("#screenshot-"+screenNum).attr("src", imageUrl);
+		screenNum++;
+	})
+	$(".project-article").each(function(){
+		$(this).css("display", "block");
+	})
+	$("#"+projectName+"-article").css("display", "none");
+	
+	$("#home").css("display", "none");
+	$("#project-con").css("display", "block");
+});
+//end of project-link
+			
+$("#home-link").on("click", function(){
+	$("#project-con").css("display", "none");
+	$("#home").css("display", "block");
+});
+//end of home-link
