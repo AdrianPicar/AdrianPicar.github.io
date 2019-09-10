@@ -221,10 +221,14 @@ $(".project-link").on("click", function(){
 		$(this).css("display", "block");
 	});
 	$("#"+projectName+"-article").css("display", "none");
-	
+
 	$("#home").css("display", "none");
 	$("#project-con").css("display", "block");
+
+	$(".carousel-highlights").slick("slickGoTo", 0, true);
+	$('.carousel-highlights').slick('slickSetOption', "autoplaySpeed", 3000, true);
 });
+
 //end of project-link
 			
 $("#home-link").on("click", function(){
@@ -232,3 +236,6 @@ $("#home-link").on("click", function(){
 	$("#home").css("display", "block");
 });
 //end of home-link
+
+
+		  

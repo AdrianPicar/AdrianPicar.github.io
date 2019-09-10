@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/slick.css">
 		<style>
 			#project-con{ display: none; }
 			.tools-col{ width:100%; }
@@ -132,16 +133,16 @@
 					<header class="major">
 						<h2>Highlights</h2>
 					</header>
-					<div class="row">
+					<div class="row carousel-highlights" style="margin:auto;">
 						<article id="highlight-1" class="highlights col-12 col-12-xsmall work-item">
 							<img id="screenshot-1" class="screenshots" src="" alt="" />
-							<h3>Magna sed consequat tempus</h3>
-							<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							<h3></h3>
+							<p></p>
 						</article>
 						<article id="highlight-2" class="highlights col-12 col-12-xsmall work-item">
 							<img id="screenshot-2" class="screenshots" src="" alt="" />
-							<h3>Ultricies lacinia interdum</h3>
-							<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							<h3></h3>
+							<p></p>
 						</article>
 					</div>
 				</section>
@@ -195,7 +196,16 @@
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/slick.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.carousel-highlights').slick({
+					autoplay:true,
+					autoplaySpeed:50
+				});
+			});
+		</script>
 	</body>
 </html>
