@@ -120,31 +120,33 @@
 
 const BPITRADE_HEADER = "<strong>BPITrade</strong>, the online stock <br>trading website by Technistock <br>for BPI Securities.";
 const BPITRADE_URL = "https://www.bpitrade.com";
-const BPITRADE_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
-const BPITRADE_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", 
+const BPITRADE_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL Server"];
+const BPITRADE_CONCEPTS = ["Full Stack Web Development", "REST API",
 						"Web Security", "Version Control (SVN)"];
-const BPITRADE_HIGHLIGHTS = ["Nice trading website", "The website is so good.",
-							"Very good functionalities", "Functions really well."];
+const BPITRADE_HIGHLIGHTS = ["Main Page", "First glance of relevant information upon login.",
+							"Research Page", "Easily search the information pertaining to a particular company.",
+							"Trading Page", "Easy-to-use and intuitive stock trading page for investing on stocks online."];
 
 const FIRSTMETRO_HEADER = "<strong>FirstMetroSec</strong>, the online stock <br>trading website by Technistock <br>for First Metro Securities.";
 const FIRSTMETRO_URL = "https://www.firstmetrosec.ph";
-const FIRSTMETRO_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL"];
-const FIRSTMETRO_CONCEPTS = ["Procedural Programming", "Full Stack Web Development", "REST API",
+const FIRSTMETRO_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "ASP Classic", "MS SQL Server"];
+const FIRSTMETRO_CONCEPTS = ["Full Stack Web Development", "REST API",
 						"Web Security", "Version Control (SVN)"];
-const FIRSTMETRO_HIGHLIGHTS = ["Nice FM website", "The website is so good.",
-							"Very good first metro functionalities", "Functions really well."];
+const FIRSTMETRO_HIGHLIGHTS = ["Quotes Page", "Real-time quotes information to help users in their investment trading decisions.",
+							"Portfolio Page", "Utilized AJAX and REST API to allow navigation through the portfolio pages without refreshing the website.",
+							"Mutual Funds - Fundsmart", "Allows investing in mutual funds online. Displays important information clearly for research and decision-making."];
 	
 const OPEAPP_HEADER = "<strong>OPE-APP</strong>, an online pre-employment <br>exam website for PNOC-EC.";
 const OPEAPP_URL_SITE = "http://opeapp.herokuapp.com";
 const OPEAPP_URL_CODE = "https://github.com/AdrianPicar/OPE_APP";
 const OPEAPP_TOOLS = ["HTML", "CSS", "Javascript", "JQuery", "PHP (CodeIgniter)", "MySQL"];
-const OPEAPP_CONCEPTS = ["Model-View-Controller (MVC)", "Full Stack Web Development", "Version Control"];
-const OPEAPP_HIGHLIGHTS = ["Nice OPEAPP website", "The website is so good.",
-							"Very good OPEAPP functionalities", "Functions really well."];
+const OPEAPP_CONCEPTS = ["Full Stack Web Development", "Model-View-Controller (MVC)", "Version Control"];
+const OPEAPP_HIGHLIGHTS = ["Admin Site - Applicants", "Easily search applicants on the list using filters. Created with AJAX to display the retrieved data without refreshing the page.",
+						"Admin Site - Settings", "Edit exam settings for the applicants. Edit display content using a custom text editor.",
+						"Applicant Site", "Question types vary from true or false, multiple choice, fill in the blanks, and multiple answers depending on the examiner."];
 
 $(".project-link").on("click", function(){
 	var projectName = $(this).attr('id');
-	var highlightNum = 1;
 	var highlightListIndex = 0;
 	var imageUrl = "";
 	var headerContent = "";
@@ -206,15 +208,14 @@ $(".project-link").on("click", function(){
 	$("#tools-col-1").html(toolsContent);
 	$("#tools-col-2").html(conceptsContent);
 
-	$(".highlights").each(function(){
-		var currSelector = "#highlight-"+ highlightNum;
+	$(".highlights").each(function(index){
+		var currSelector = "#highlight-"+ (index+1);
 		$(currSelector + " > h3").html(highlightsList[highlightListIndex]);
 		highlightListIndex++;
 		$(currSelector + " > p").html(highlightsList[highlightListIndex]);
-		
-		imageUrl = "images/screenshots/" + projectName + "_" + highlightNum + ".jpg";
+		highlightListIndex++;
+		imageUrl = "images/screenshots/" + projectName + "_" + (index+1) + ".jpg";
 		$(currSelector + " > img").attr("src", imageUrl);
-		highlightNum++;
 	});
 
 	$(".project-article").each(function(){
